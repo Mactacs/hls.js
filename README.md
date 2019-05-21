@@ -190,6 +190,19 @@ We support this now. You can safely require this library in Node and absolutely 
 
 All HLS resources must be delivered with [CORS headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) permitting `GET` requests.
 
+If you are using apache server follow this steps:
+1.) Change in /etc/apache2/apache2.conf
+<Directory /var/www/html>
+     Order Allow,Deny
+     Allow from all
+     AllowOverride all
+     Header set Access-Control-Allow-Origin "*"
+</Directory>
+2.) Add/activate module. Open terminal and execute the command below.
+    > a2enmod headers 
+3.) Restart service
+    > /etc/init.t/apache2 restart
+
 ## Features
 
   - VoD & Live playlists
